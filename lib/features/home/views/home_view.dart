@@ -55,21 +55,26 @@ class _HomeViewState extends State<HomeView> {
                 ) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (c){
-                        return ProductDetailsView();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (c) {
+                            return ProductDetailsView();
+                          },
+                        ),
+                      );
                     },
                     child: CardItem(
                       image: 'assets/test/test.png',
                       text: 'Cheeseburger',
                       desc: "Wendy's Burger",
-                      rate: '⭐4.9',
+                      rate: '4.9',
                     ),
                   );
                 }),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.71,
+                  childAspectRatio: 0.75,
                 ),
               ),
             ),

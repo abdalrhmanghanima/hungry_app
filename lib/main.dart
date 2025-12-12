@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hungry_app/root.dart';
-import 'package:hungry_app/splash.dart';
+import 'package:flutter/services.dart';
+import 'package:hungry_app/features/auth/views/signup_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -15,9 +17,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Hungry App',
       theme: ThemeData(
+        splashColor: Colors.transparent,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: Root(),
+      home: SignupView(),
     );
   }
 }

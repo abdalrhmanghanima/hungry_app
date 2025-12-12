@@ -6,9 +6,9 @@ class CustomText extends StatelessWidget {
   const CustomText({
     super.key,
     required this.text,
-     this.color,
-     this.size,
-     this.weight,
+    this.color,
+    this.size,
+    this.weight,
   });
   final String text;
   final Color? color;
@@ -18,6 +18,10 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+      textScaler: TextScaler.linear(1.0),
+      textAlign: TextAlign.center,
       text,
       style: TextStyle(fontSize: size, fontWeight: weight, color: color),
     );

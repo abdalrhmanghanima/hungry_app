@@ -41,14 +41,15 @@ class _CustomTextfieldState extends State<CustomTextfield> {
       decoration: InputDecoration(
         suffixIcon:widget.isPassword? GestureDetector(
             onTap: _togglePassword,
-            child: Icon(CupertinoIcons.eye)):null,
+            child: Icon(CupertinoIcons.eye,color:AppColors.primary)):null,
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white)
+            borderSide: BorderSide(color: AppColors.primary)
         ),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white)
         ),
         hintText: widget.hint,
+        hintStyle: TextStyle(color: AppColors.primary),
         fillColor: Colors.white,
         filled: true,
       ),

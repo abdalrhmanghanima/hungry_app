@@ -36,6 +36,7 @@ flutter:
     - assets/splash/
     - assets/test/
     - assets/detail/
+    - assets/icon/
   # fonts:
   #   - family: Schyler
   #     fonts:

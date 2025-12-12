@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hungry_app/core/constants/app_colors.dart';
+
 class ToppingCard extends StatelessWidget {
   final String imageUrl;
   final String title;
@@ -20,10 +22,8 @@ class ToppingCard extends StatelessWidget {
           child: Container(
             height: 85,
             width: 110,
-            color: Color(0xff3C2F2F),
-            child: Column(
-              children: [],
-            ),
+            color: AppColors.primary,
+            child: Column(children: []),
           ),
         ),
         Positioned(
@@ -35,10 +35,7 @@ class ToppingCard extends StatelessWidget {
             width: 70,
             child: Card(
               color: Colors.white,
-              child: Image.asset(
-                imageUrl,
-                fit: BoxFit.contain,
-              ),
+              child: Image.asset(imageUrl, fit: BoxFit.contain),
             ),
           ),
         ),
@@ -46,11 +43,13 @@ class ToppingCard extends StatelessWidget {
           right: 0,
           left: 0,
           bottom: 0,
-          child: Padding(padding: EdgeInsets.all(12),
+          child: Padding(
+            padding: EdgeInsets.all(12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(title,
+                Text(
+                  title,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14,
@@ -62,7 +61,7 @@ class ToppingCard extends StatelessWidget {
                   child: const CircleAvatar(
                     radius: 10,
                     backgroundColor: Colors.red,
-                    child: Icon(Icons.add,color: Colors.white,size: 14,),
+                    child: Icon(Icons.add, color: Colors.white, size: 14),
                   ),
                 ),
               ],

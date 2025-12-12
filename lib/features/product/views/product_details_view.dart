@@ -18,6 +18,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
         leading: GestureDetector(
           onTap: () {
@@ -78,21 +80,37 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   }),
                 ),
               ),
-              Gap(50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Gap(100),
+            ],
+          ),
+        ),
+      ),
+      bottomSheet: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade800,
+              blurRadius: 15,
+              offset: Offset(0, 0),
+            ),
+          ],
+          borderRadius: BorderRadius.circular(30),
+        ),
+        height: 120,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(text: 'Total', size: 20),
-                      CustomText(text: '\$ 18.9', size: 27),
-                    ],
-                  ),
-                  CustomButton(text: 'Add To Cart', onTap: () {}),
+                  CustomText(text: 'Total', size: 20),
+                  CustomText(text: '\$ 18.9', size: 27),
                 ],
               ),
-              Gap(100),
+              CustomButton(text: 'Add To Cart', onTap: () {}),
             ],
           ),
         ),
