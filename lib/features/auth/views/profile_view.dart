@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
+import 'package:hungry_app/features/auth/views/login_view.dart';
+import 'package:hungry_app/features/auth/views/signup_view.dart';
 import 'package:hungry_app/features/auth/widgets/custom_user_text_field.dart';
 
 import '../../../shared/custom_text.dart';
@@ -139,7 +141,14 @@ class _ProfileViewState extends State<ProfileView> {
 
                 child:Row(
                   children: [
-                    CustomText(text: 'Log Out',color:AppColors.primary,),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => LoginView()),
+                          );
+                        },
+                        child: CustomText(text: 'Log Out',color:AppColors.primary,)),
                     Icon(Icons.logout,color: AppColors.primary,)
                   ],
                 ),
