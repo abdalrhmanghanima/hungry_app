@@ -51,6 +51,12 @@ class _LoginViewState extends State<LoginView> {
         setState(() => isLoading = false);
       }
   }
+  @override
+  void initState() {
+    emailController.text='Ghanima15@gmail.com';
+    passController.text='12345678';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +144,7 @@ class _LoginViewState extends State<LoginView> {
                                   CustomAuthBtn(
                                     color: Colors.white,
                                     textColor: AppColors.primary,
-                                    text: "Signup",
+                                    text: "Create new account",
                                     onTap: () {
                                       Navigator.pushReplacement(
                                         context,

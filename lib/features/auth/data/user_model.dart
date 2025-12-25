@@ -5,7 +5,7 @@ class UserModel {
   final String? token;
   final String? visa;
   final String? address;
-  UserModel({
+  UserModel ({
     required this.name,
     required this.email,
     this.image,
@@ -19,8 +19,8 @@ class UserModel {
       email: json['email'] ?? "",
       image: json['image'] ?? "",
       token: json['token'] ?? "",
-      visa: json['Visa'] ?? "",
-      address: json['address'] ?? "",
+      visa: json['Visa'] ,
+      address: json['address'],
     );
   }
 }

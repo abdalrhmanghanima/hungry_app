@@ -111,7 +111,7 @@ class _SignupViewState extends State<SignupView> {
                         CustomAuthBtn(
                           textColor: AppColors.primary,
                           color: Colors.white,
-                          text: "Login",
+                          text: "I already have an account",
                           onTap: () {
                             Navigator.pushReplacement(
                               context,
