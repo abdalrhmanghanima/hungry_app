@@ -53,8 +53,8 @@ class _LoginViewState extends State<LoginView> {
   }
   @override
   void initState() {
-    emailController.text='Ghanima15@gmail.com';
-    passController.text='12345678';
+    emailController.text.toString().trim();
+    passController.text.toString().trim();
     super.initState();
   }
 
@@ -112,7 +112,8 @@ class _LoginViewState extends State<LoginView> {
                                 children: [
                                   const Gap(30),
 
-                                  CustomTextfield(
+                                  CustomTextField(
+                                    textInputAction: TextInputAction.next,
                                     isPassword: false,
                                     hint: "Email Address",
                                     controller: emailController,
@@ -120,7 +121,8 @@ class _LoginViewState extends State<LoginView> {
 
                                   const Gap(15),
 
-                                  CustomTextfield(
+                                  CustomTextField(
+                                    textInputAction: TextInputAction.done,
                                     hint: "Password",
                                     controller: passController,
                                     isPassword: true,

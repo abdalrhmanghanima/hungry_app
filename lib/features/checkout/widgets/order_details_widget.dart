@@ -17,7 +17,7 @@ final String order,taxes,fees,total;
         checkoutWidget('Delivery fees', fees, false,false),
         Gap(10),
         Divider(),
-        Gap(10),
+        Gap(15),
         checkoutWidget('Total', total, true,false),
         Gap(10),
         checkoutWidget('Estimated delivery time:', '15 - 30 mins', true,true),

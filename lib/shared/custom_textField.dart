@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 
 import '../core/constants/app_colors.dart';
 
-class CustomTextfield extends StatefulWidget {
-  const CustomTextfield({super.key, required this.hint, required this.isPassword, required this.controller});
+class CustomTextField extends StatefulWidget {
+  const CustomTextField({super.key, required this.hint, required this.isPassword, required this.controller, this.textInputAction});
 final String hint;
 final bool isPassword;
+final TextInputAction? textInputAction;
 final TextEditingController controller;
 
   @override
-  State<CustomTextfield> createState() => _CustomTextfieldState();
+  State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
-class _CustomTextfieldState extends State<CustomTextfield> {
+class _CustomTextFieldState extends State<CustomTextField> {
   late bool _obscureText;
   @override
   void initState() {
@@ -28,6 +29,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: widget.textInputAction,
       controller: widget.controller,
       cursorHeight: 20,
       cursorColor: AppColors.primary,

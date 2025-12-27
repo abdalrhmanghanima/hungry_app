@@ -6,9 +6,9 @@ class ApiService{
 
   final DioClient _dioClient=DioClient();
 
-  Future<dynamic>get(String endPoint)async {
+  Future<dynamic>get(String endPoint,{dynamic param})async {
     try {
-      final response = await _dioClient.dio.get(endPoint);
+      final response = await _dioClient.dio.get(endPoint,queryParameters: param);
       return response.data;
     }
     on DioException catch(e){
@@ -36,9 +36,9 @@ class ApiService{
     }
   }
 
-  Future<dynamic>delete(String endPoint,dynamic body)async {
+  Future<dynamic>delete(String endPoint,dynamic body, {dynamic params})async {
     try {
-      final response = await _dioClient.dio.delete(endPoint,data: body);
+      final response = await _dioClient.dio.delete(endPoint,data: body,queryParameters: params);
       return response.data;
     }
     on DioException catch(e){

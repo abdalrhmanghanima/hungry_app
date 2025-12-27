@@ -82,19 +82,22 @@ class _SignupViewState extends State<SignupView> {
                     child: Column(
                       children: [
                         Gap(30),
-                        CustomTextfield(
+                        CustomTextField(
+                          textInputAction: TextInputAction.next,
                           hint: "Name",
                           isPassword: false,
                           controller: nameController,
                         ),
                         Gap(15),
-                        CustomTextfield(
+                        CustomTextField(
+                          textInputAction: TextInputAction.next,
                           hint: "Email Address",
                           isPassword: false,
                           controller: emailController,
                         ),
                         Gap(15),
-                        CustomTextfield(
+                        CustomTextField(
+                          textInputAction: TextInputAction.done,
                           hint: "Password",
                           isPassword: true,
                           controller: passController,
