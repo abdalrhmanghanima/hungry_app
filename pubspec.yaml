@@ -41,7 +41,4 @@ flutter:
     - assets/test/
     - assets/detail/
     - assets/icon/
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+    - assets/readme/

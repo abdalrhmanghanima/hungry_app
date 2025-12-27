@@ -1,16 +1,62 @@
-# hungry_app
+<p align="center">
+  <img src="assets/readme/splash.png" alt="Hungry App Splash Screen" />
+</p>
 
-A new Flutter project.
+# Hungry App 🍔
+Food Ordering Mobile Application built with Flutter
 
-## Getting Started
+Hungry App is a modern food ordering mobile application built with Flutter that allows users to browse meals, manage their cart, and complete checkout with a clean and responsive UI.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Features
+- User Authentication
+- Browse Restaurants & Meals
+- Product Details
+- Cart & Checkout
+- Profile Management
+- REST API Integration
+- Responsive UI (Android & iOS)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+- Flutter & Dart
+- REST APIs
+- MVC / Clean Architecture
+- State Management
+- Custom UI Components
+
+---
+
+## 📱 App Screenshots
+<p align="center">
+  <img src="assets/readme/home.png" width="200"/>
+  <img src="assets/readme/product_detail.png" width="200"/>
+  <img src="assets/readme/cart.png" width="200"/>
+</p>
+
+<p align="center">
+  <img src="assets/readme/checkout.png" width="200"/>
+  <img src="assets/readme/profile.png" width="200"/>
+</p>
+
+---
+
+## 📦 Project Structure
+lib/
+├── core
+├── features
+├── shared
+├── main.dart
+
+---
+
+## 👨‍💻 Author
+**Abdelrahman Ghanima**  
+Flutter Mobile Application Developer
+
+---
+
+## ⭐ Show Your Support
+If you like this project, give it a ⭐ on GitHub!
