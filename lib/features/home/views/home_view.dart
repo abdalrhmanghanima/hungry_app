@@ -14,6 +14,7 @@ import '../../../core/network/api_error.dart';
 import '../../../shared/custom_snack.dart';
 import '../../auth/data/auth_repo.dart';
 import '../../auth/data/user_model.dart';
+import '../data/models/data.dart';
 import '../widgets/food_category.dart';
 
 class HomeView extends StatefulWidget {
@@ -24,17 +25,18 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final List<String> category = ['All', 'Combo', 'Sliders', 'Classic'];
-  int selectedIndex = 0;
-
   List<ProductModel>? products;
   List<ProductModel>? allProducts;
-
+  List<Data> allCategories = [];
+  int selectedIndex = 0;
   final ProductRepo productRepo = ProductRepo();
   final AuthRepo authRepo = AuthRepo();
 
   UserModel? userModel;
   final TextEditingController controller = TextEditingController();
+
+  List<ProductModel> productsByCategory = [];
+  bool isLoadingProducts = false;
 
   Future<void> getProfileData() async {
     try {
@@ -59,11 +61,44 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
+  Future<void> getCategories() async {
+    try {
+      final response = await productRepo.getCategories();
+
+      setState(() {
+        allCategories = [Data(id: 0, name: 'All'), ...response];
+        selectedIndex = 0;
+      });
+    } catch (e) {
+      setState(() {
+        allCategories = [Data(id: 0, name: 'All')];
+        selectedIndex = 0;
+      });
+    }
+  }
+
+  Future<void> getProductsByCategory({int? categoryId}) async {
+    setState(() {
+      isLoadingProducts = true;
+    });
+
+    final response = await productRepo.getProductsByCategory(
+      categoryId: categoryId,
+    );
+
+    setState(() {
+      products = response;
+      isLoadingProducts = false;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    getProducts();
     getProfileData();
+    getCategories();
+    getProducts();
+    getProductsByCategory();
   }
 
   @override
@@ -90,7 +125,6 @@ class _HomeViewState extends State<HomeView> {
             child: CustomScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               slivers: [
-                // ================= APP BAR =================
                 SliverAppBar(
                   pinned: true,
                   backgroundColor: Colors.white,
@@ -145,18 +179,31 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
 
-                // ================= CATEGORY =================
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: FoodCategory(
+                      categories: allCategories,
                       selectedIndex: selectedIndex,
-                      category: category,
+                      onSelected: (index) {
+                        if (isLoadingProducts) return;
+
+                        setState(() {
+                          selectedIndex = index;
+                        });
+
+                        final categoryId = allCategories[index].id;
+
+                        if (categoryId == 0) {
+                          getProductsByCategory();
+                        } else {
+                          getProductsByCategory(categoryId: categoryId);
+                        }
+                      },
                     ),
                   ),
                 ),
 
-                // ================= GRID =================
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 15,

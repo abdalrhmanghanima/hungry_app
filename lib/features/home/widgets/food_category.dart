@@ -1,53 +1,41 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/constants/app_colors.dart';
 import '../../../shared/custom_text.dart';
+import '../data/models/data.dart';
 
-class FoodCategory extends StatefulWidget {
-   FoodCategory({super.key, required this.selectedIndex, required this.category});
+class FoodCategory extends StatelessWidget {
+  const FoodCategory({
+    super.key,
+    required this.selectedIndex,
+    required this.categories,
+    required this.onSelected,
+  });
+
   final int selectedIndex;
-  final List category;
-  @override
-  State<FoodCategory> createState() => _FoodCategoryState();
-}
+  final List<Data> categories;
+  final Function(int) onSelected;
 
-class _FoodCategoryState extends State<FoodCategory> {
-late int selectedIndex;
-@override
-  void initState() {
-    selectedIndex=widget.selectedIndex;
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: List.generate(widget.category.length, (index) {
+        children: List.generate(categories.length, (index) {
+          final isSelected = selectedIndex == index;
+
           return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
+            onTap: () => onSelected(index),
             child: Container(
-              margin: EdgeInsets.only(right: 8),
+              margin: const EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 15),
               decoration: BoxDecoration(
-                color: selectedIndex == index
-                    ? AppColors.primary
-                    : Color(0xffF3F4F6),
+                color: isSelected ? AppColors.primary : const Color(0xffF3F4F6),
                 borderRadius: BorderRadius.circular(20),
               ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 27,
-                vertical: 15,
-              ),
               child: CustomText(
-                text: widget.category[index],
+                text: categories[index].name ?? '',
                 weight: FontWeight.w500,
-                color: selectedIndex == index
-                    ? Colors.white
-                    : Colors.grey.shade700,
+                color: isSelected ? Colors.white : Colors.grey.shade700,
               ),
             ),
           );
